@@ -1,0 +1,91 @@
+/****** Object:  Table [dbo].[TB_Autores]    Script Date: 27/07/2022 10:05:21 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_Autores](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[nombreAutor] [varchar](250) NULL,
+	[fechaNacimiento] [date] NULL,
+	[ciudad] [varchar](100) NULL,
+	[email] [varchar](150) NULL,
+ CONSTRAINT [PK_TB_Autores] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TB_Libros]    Script Date: 27/07/2022 10:05:21 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_Libros](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[titulo] [varchar](150) NULL,
+	[ano] [date] NULL,
+	[numeroPaginas] [int] NULL,
+	[idAutor] [int] NULL,
+ CONSTRAINT [PK_TB_Libros] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetAuthor]    Script Date: 27/07/2022 10:05:21 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:      <Author, , Name>
+-- Create Date: <Create Date, , >
+-- Description: <Description, , >
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GetAuthor]
+
+@pid int  = null
+
+AS
+BEGIN
+
+
+				   SELECT COUNT(li.Id) AS cantidadLibros,au.Id,au.nombreAutor,au.fechaNacimiento,au.ciudad,au.email FROM TB_Autores AS au
+				   LEFT JOIN TB_Libros AS li On li.idAutor = au.Id
+				   WHERE au.Id = ISNULL(@pid,au.Id)
+				   GROUP BY au.Id,au.nombreAutor,au.fechaNacimiento,au.ciudad,au.email
+				   ORDER BY au.Id DESC
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetLibros]    Script Date: 27/07/2022 10:05:21 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:      <Author, , Name>
+-- Create Date: <Create Date, , >
+-- Description: <Description, , >
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_GetLibros]
+
+@pid int  = null
+
+AS
+BEGIN
+
+
+						   SELECT li.Id,li.titulo,li.ano,li.numeroPaginas,au.nombreAutor,au.Id AS idAutor
+						   FROM TB_Libros AS li
+						   INNER JOIN TB_Autores AS au ON au.id = li.idAutor
+
+						   WHERE au.Id = ISNULL(@pid,au.Id)
+
+
+END
+GO
