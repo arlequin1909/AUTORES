@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "VerLibrosAutor";
+    Layout = "~/Views/Shared/gestionView.cshtml";
+}
+
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header page-header-light">
+        <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+                <div class="breadcrumb">
+                    <a href="@Url.Action("Index", "Home")" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Home</a>
+                    <a href="@Url.Action("VerLibrosAutor", "Home")" class="breadcrumb-item">Libros autor</a>
+                </div>
+
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- Content area -->
+    <div class="content">
+
+        <div class="card" style="padding :30px ;">
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <div class="card-header bg-info">
+                        <h6 class="card-title">
+                            <a data-toggle="collapse" class="text-white" href="#accordion-styled-group1">Libros del autor </a>
+                        </h6>
+
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <a href="@Url.Action("Index", "Home")"> <button type="button" class="btn btn-secondary" style="height:52px; width:170px;color:white;font-size:17px;">Atras</button></a>
+                </div>
+
+                <div class="col-sm-1"></div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <table class="table datatable-basic table-striped filtros" id="filtros">
+                        <thead>
+                            <tr style="background: #00bcd4; color: white;">
+                                <th>Identificador libro</th>
+                                <th>Titulo libro</th>
+                                <th>Año publicacion</th>
+                                <th>Numero de paginas</th>
+                                <th>Nombre autor</th>
+                                <th>Identificador autor</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var rows in ViewBag.Libros)
+                            {
+                            <tr>
+                                <td>@rows["id"]</td>
+                                <td>@rows["titulo"]</td>
+                                <td>@rows["ano"]</td>
+                                <td>@rows["numeroPaginas"]</td>
+                                <td>@rows["nombreAutor"]</td>
+                                <td>@rows["idAutor"]</td>
+
+                            </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="col-sm-1"></div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+<!-- /main content -->
+
+
+@section scripts{
+
+    @if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+              type: '@TempData["type"]',
+              title: '@TempData["title"]',
+              html: '@TempData["message"]',
+            })
+        </script>
+        @TempData.Remove("type");
+        @TempData.Remove("title");
+        @TempData.Remove("message");
+    }
+
+    <script type="text/javascript">
+        $(".filtros").DataTable({
+            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+            destroy: true,
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json'
+            }
+        });
+    </script>
+
+}
+

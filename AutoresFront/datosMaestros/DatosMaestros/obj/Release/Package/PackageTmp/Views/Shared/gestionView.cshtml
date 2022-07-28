@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Datos Maestros</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/timepicker@1.11.15/jquery.timepicker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style type="text/css">
+        .select2-selection--single:not([class*=bg-]):not([class*=border-]) {
+            height: 32px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 16px;
+            display: block;
+            padding-left: .875rem;
+            padding-right: 2.375rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .select2-selection--single .select2-selection__clear:after {
+            line-height: 10px;
+            content: "";
+            font-family: icomoon;
+            display: inline-block;
+            font-size: 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        .select2-search--dropdown:after {
+            content: "";
+            font-family: icomoon;
+            position: absolute;
+            top: 50%;
+            left: 1.25rem;
+            color: inherit;
+            display: block;
+            font-size: .8125rem;
+            margin-top: -.40625rem;
+            line-height: 1;
+            opacity: .6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .swal2-icon.swal2-icon {
+            color: #455a64;
+            border-color: #455a64;
+            font-size: 1.5rem;
+            line-height: calc(2rem + .25rem);
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    </style>
+    @RenderSection("css", false)
+</head>
+
+<body class="sidebar-xs">
+    <!-- Main navbar -->
+    
+    <div>
+        <script src="~/Content/assets/js/chart.min.js"></script>
+        <script src="~/Content/global_assets/js/main/jquery.min.js"></script>
+        <script src="~/Content/global_assets/js/main/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/global_assets/js/plugins/loaders/blockui.min.js"></script>
+        <script src="~/Content/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+        <script src="~/Content/assets/js/app.js"></script>
+
+
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/timepicker@1.11.15/jquery.timepicker.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+        <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+
+        @RenderSection("scripts", false)
+    </div>
+</body>
+</html>

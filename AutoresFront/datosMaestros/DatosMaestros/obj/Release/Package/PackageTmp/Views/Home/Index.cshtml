@@ -1,0 +1,68 @@
+﻿@model DatosMaestros.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+
+    <form action="@Url.Action("Login")" class="login-form" method="post">
+        <div class="text-center">
+            <img src="~/Content/images/abacus.png" alt="" width="90%" />
+        </div>
+        <div class="card mb-0">
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <h5 class="mb-0">INICIO DE SESIÓN</h5>
+                    <span class="d-block text-muted">
+                        Ingrese sus credenciales a continuación
+                    </span>
+                </div>
+
+                <div class="form-group form-group-feedback form-group-feedback-left">
+                    <input type="text" class="form-control" placeholder="Usuario" name="usuario" required>
+                    <div class="form-control-feedback">
+                        <i class="icon-user text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-feedback form-group-feedback-left">
+                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" required>
+                    <div class="form-control-feedback">
+                        <i class="icon-lock2 text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   <button type="submit" class="btn btn-primary btn-block" style=" background-color:#0245ba ;border-color:#0245ba">Ingresar<i class="icon-circle-right2 ml-2"></i></button>
+                </div>
+
+                <div class="text-center">
+                    <a href="@Url.Action("forgotYourPassword")">¿Olvidó su contraseña?</a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="simple-footer text-center">
+            © @DateTime.Now.ToString("yyyy") MetNet - Todos Los Derechos Reservados.
+        </div>
+    </form>
+
+@section scripts{
+    @if (Session["message"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                type: '@Session["type"]',
+                html: "@Session["message"]",
+                title: "@Session["title"]",
+                ShowConfirmButton: true,
+                confirmButtonColor: '#01abe8',
+                cancelButtonColor: '#94999c',
+            });
+        </script>
+        Session.Remove("type");
+        Session.Remove("message");
+        Session.Remove("title");
+    }
+    <script>
+    </script>
+}

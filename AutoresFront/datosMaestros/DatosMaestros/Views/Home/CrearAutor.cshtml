@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "CrearAutor";
+    Layout = "~/Views/Shared/gestionView.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Page header -->
+    <div class="page-header page-header-light">
+        <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+                <div class="breadcrumb">
+                    <a href="@Url.Action("Index", "Home")" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Home</a>
+                    <a href="#" class="breadcrumb-item">Crear autor</a>
+                </div>
+
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="about-box pt-5 pb-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="">
+                        <h4 class="">Nuevo autor</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <form action="@Url.Action("SaveAutor")" method="post" id="formsaveArticle" class="col-sm-12 row" enctype="multipart/form-data">
+                            <div class="col-sm-12">
+                                <input type="hidden" name="idauthor" value="" />
+                                <div class="row">
+                                    <div class="col-sm-12 mb-3">
+
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Nombre completo<span class="text-danger">*</span></label>
+                                            <input type="text" name="nombreAutor" required class="form-control form-control-sm" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Fecha nacimiento<span class="text-danger">*</span></label>
+                                            <input type="date" name="fechaNacimiento" required class="form-control form-control-sm" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>ciudad<span class="text-danger">*</span></label>
+                                            <input type="text" name="ciudad" required class="form-control form-control-sm" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>correo<span class="text-danger">*</span></label>
+                                            <input type="email" name="email" required class="form-control form-control-sm" value="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-sm-12 text-center">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <a href="@Url.Action("Index", "Home")" style="font-size:17px" class="bg-secondary btn btn-block btn-light btn-radius btn-secondary">Cancelar</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input style="background: #28a745;color: white; font-size:17px" type="submit" value="Crear autor" class="btn btn-block btn-brd btn-light btn-radius btnsave grd1" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

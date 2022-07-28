@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=asael.colombiahosting.com.co\MSSQLSERVER2014;AttachDbFilename=|DataDirectory|\aspnet-METNET-20190108050350.mdf;Initial Catalog=aspnet-METNET-20190108050350;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Admin\\Desktop\\DATOS\ MAESTROS\\DatosMaestros\\DatosMaestros\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="CustomerDataConnectionString-Web.config Connection String" description="CustomerDataConnectionString Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=datosmaestros2.database.windows.net; Initial Catalog=DatosMaestro2;Persist Security Info=True;User ID=datosmaestros2;Password=Datos#123;Connect Timeout=1200;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Admin\\Desktop\\DATOS\ MAESTROS\\DatosMaestros\\DatosMaestros\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CustomerDataConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

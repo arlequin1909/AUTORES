@@ -1,0 +1,120 @@
+﻿@model DatosMaestros.Models.updatePassword
+
+@{
+    ViewBag.Title = "actualizarContrasena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("updatePassword")" class="login-form" method="post">
+    <div class="text-center">
+        <img src="~/Content/images/abacus.png" alt="" width="90%" />
+    </div>
+    <div class="card mb-0">
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <h5 class="mb-0">RESTABLECER CONTRASEÑA</h5>
+            </div>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="text" class="form-control" placeholder="Contraseña Temporal" name="actual" required>
+                <div class="form-control-feedback">
+                    <i class="icon-lock2 text-muted"></i>
+                </div>
+            </div>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="password" class="form-control" placeholder="Nueva Contraseña" name="newpassword" required>
+                <div class="form-control-feedback">
+                    <i class="icon-lock2 text-muted"></i>
+                </div>
+            </div>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="confirmnewpassword" required>
+                <div class="form-control-feedback">
+                    <i class="icon-lock2 text-muted"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" style=" background-color:#01abe8;border-color:#01abe8">Actualizar Contraseña<i class="icon-circle-right2 ml-2"></i></button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="simple-footer text-center">
+        © @DateTime.Now.ToString("yyyy") MetNet - Todos Los Derechos Reservados.
+    </div>
+</form>
+
+@section scripts{
+    @if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                type: '@Session["type"]',
+                html: "@Session["message"]",
+                title: "@Session["title"]",
+                ShowConfirmButton: true,
+                confirmButtonColor: '#01abe8',
+                cancelButtonColor: '#94999c',
+            });
+        </script>
+    }
+    @*<script type="text/javascript">
+            $('#passtwo').blur(function () {
+                if ($("#passtwo").val().length > 0) {
+                    if ($("#passone").val() != $("#passtwo").val()) {
+                        Swal.fire({
+                            type: 'error',
+                            title: "Las contraseñas no coinciden, verifique.",
+                            showConfirmButton: true,
+                            confirmButtonColor: '#01abe8',
+                            timer: 2500
+                        });
+                    }
+                }
+            });
+
+
+        </script>*@
+    <script type="text/javascript">
+        $("#formsaveemployee").validate({
+            rules: {
+                newpassword: {
+                    required: true,
+                    pwcheck: true,
+                    minlength: 6
+                },
+                confirmnewpassword: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#passone"
+                },
+                actual: {
+                    required: true,
+                }
+            },
+            messages: {
+                newpassword: {
+                    required: "Por favor proporcione una contraseña",
+                    pwcheck: "Su contraseña debe ser alfanumérica",
+                    minlength: "Su contraseña debe tener al menos 6 caracteres."
+                },
+                confirmnewpassword: {
+                    required: "Por favor proporcione una contraseña",
+                    minlength: "Su contraseña debe tener al menos 6 caracteres.",
+                    equalTo: "Las contraseñas no coinciden, verifique."
+                },
+                actual: {
+                    required: "Por favor proporcione una contraseña",
+                    minlength: "Su contraseña debe tener al menos 6 caracteres.",
+                    equalTo: "Las contraseñas no coinciden, verifique."
+                }
+            }
+        });
+        $.validator.addMethod("pwcheck", function (value, element) {
+            return /^[A-Za-z0-9]/.test(value) // consists of only these
+                //&& /[a-z]/.test(value) // has a lowercase letter
+                //&& /[A-Z]/.test(value) // has a lowercase letter
+                && /\d/.test(value) // has a digit
+            /*&& /([-,!,%,&,#,$,^,*,?,_,~])/.test(value)*/
+        });
+    </script>
+}

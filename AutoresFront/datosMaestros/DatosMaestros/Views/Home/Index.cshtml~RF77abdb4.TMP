@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/gestionView.cshtml";
+}
+
+<!-- Main content -->
+<div class="content-wrapper" onload="">
+
+    <!-- Page header -->
+    <div class="page-header page-header-light">
+        <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+                <div class="breadcrumb">
+                    <a href="@Url.Action("Index", "Home")" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Home</a>
+                    <a href="@Url.Action("Index", "Home")" class="breadcrumb-item">Autores</a>
+                </div>
+
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- Content area -->
+    <div class="content">
+
+        <div class="card" style="padding :30px ;">
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <div class="card-header bg-info">
+                        <h6 class="card-title">
+                            <a data-toggle="collapse" class="text-white" href="#accordion-styled-group1">Autores    <p>*</p> </a>
+                        </h6>
+
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <a href="@Url.Action("CrearAutor", "Home")"> <button type="button" class="btn btn-success" style="height:52px; width:170px;color:white;font-size:17px;"> Crear nuevo autor</button></a>
+                </div>
+
+                <div class="col-sm-1"></div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <table class="table datatable-basic table-striped filtros" id="filtros">
+                        <thead>
+                            <tr style="background: #00bcd4; color: white;">
+                                <th>Nombre del Autor</th>
+                                <th>Fecha de Nacimiento</th>
+                                <th>Ciudad</th>
+                                <th>Correo</th>
+                                <th>Cantidad de libros</th>
+                                <th>Acción</th>
+                                <th>Acción</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var rows in ViewBag.Autores)
+                            {
+                            <tr>
+                                <td>@rows["nombreAutor"]</td>
+                                <td>@rows["fechaNacimiento"]</td>
+                                <td>@rows["ciudad"]</td>
+                                <td>@rows["email"]</td>
+                                <td>@rows["cantidadLibros"]</td>
+                                <td> <a href="@Url.Action("VerLibrosAutor", "Home", new { id=rows["id"]})"> <button type="button" class="btn btn-primary" style="height:35px; width:120px;color:white;font-size:15px;"> Ver libros</button></a></td>
+                                <td> <a href="@Url.Action("AgregarLibro", "Home", new { id=rows["id"]})"> <button type="button" class="btn btn-success" style="height:35px; width:140px;color:white;font-size:15px;"> Agregar libro</button></a></td>
+
+
+                            </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="col-sm-1"></div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- /main content -->
+
+
+@section scripts{
+
+
+    <script type="text/javascript">
+        $(".filtros").DataTable({
+            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+            destroy: true,
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json'
+            }
+        });
+    </script>
+
+
+    @if (Session["estadoApi"].ToString() == "1")
+    {
+
+        <script>
+            function myFunction() {
+                alert("Autor creado con exito");
+            }
+            setTimeout(myFunction, 1000);
+
+        </script>
+
+    }
+    else if (Session["estadoApi"].ToString() == "2" || Session["estadoApi"].ToString() == "3")
+    {
+        <script>
+            function myFunction() {
+                alert("Se genero un problema al crear el Autor");
+            }
+            setTimeout(myFunction, 1000);
+
+        </script>
+    }
+    else if (Session["estadoApi"].ToString() == "4" )
+    {
+    <script>
+        function myFunction() {
+            alert("Se agrego el libro al autor con exito");
+        }
+        setTimeout(myFunction, 1000);
+
+    </script>
+    }
+    else if (Session["estadoApi"].ToString() == "5" || Session["estadoApi"].ToString() == "6")
+    {
+    <script>
+        function myFunction() {
+            alert("Se genero un problema al agregar el libro al autor");
+        }
+        setTimeout(myFunction, 1000);
+
+    </script>
+    }
+
+
+}
